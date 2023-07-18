@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/admin-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/admin-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/basket.main.iml" filepath="$PROJECT_DIR$/.idea/modules/basket.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/catalog.main.iml" filepath="$PROJECT_DIR$/.idea/modules/catalog.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/discount.main.iml" filepath="$PROJECT_DIR$/.idea/modules/discount.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ngshop-backend.iml" filepath="$PROJECT_DIR$/.idea/ngshop-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ordering.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ordering.main.iml" />
+    </modules>
+  </component>
+</project>
