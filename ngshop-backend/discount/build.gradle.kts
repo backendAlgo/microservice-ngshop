@@ -28,9 +28,11 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+	implementation ("org.springframework.cloud:spring-cloud-starter-config")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	runtimeOnly("com.oracle.database.jdbc:ojdbc8")
+//	runtimeOnly("com.oracle.database.jdbc:ojdbc8")
+	implementation("com.h2database:h2:2.2.220")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
