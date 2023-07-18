@@ -15,7 +15,7 @@ public class DiscountService {
     public Discount getDiscount(String productId) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Discount> discountResponseEntity = restTemplate
-                .getForEntity(DISCOUNT_BASE_URL + "/getProductDiscount/64b29bf80634786c559d8c13",
+                .getForEntity(DISCOUNT_BASE_URL + "/getProductDiscount/" + productId,
                         Discount.class);
         log.info("returned response: {}", discountResponseEntity);
         return discountResponseEntity.getBody();

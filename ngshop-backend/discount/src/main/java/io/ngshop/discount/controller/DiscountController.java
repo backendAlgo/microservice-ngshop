@@ -15,13 +15,13 @@ import java.util.Map;
 public class DiscountController {
     Map<String, Discount> productToDiscount =
             Map.of(
-                    "602d2149e773f2a3990b47f5", new Discount(1L),
-                    "64b29bf80634786c559d8c13", new Discount(2L),
-                    "64b29c340634786c559d8c14", new Discount(2L),
-                    "64b66e3f0dc1125b6d8ecb66", new Discount(2L),
-                    "64b66e510dc1125b6d8ecb67", new Discount(3L),
-                    "64b66e550dc1125b6d8ecb68", new Discount(4L),
-                    "64b66e580dc1125b6d8ecb69", new Discount(5L)
+                    "602d2149e773f2a3990b47f5", new Discount(1L, "some description", 15L),
+                    "64b29bf80634786c559d8c13", new Discount(2L, "some description", 22L),
+                    "64b29c340634786c559d8c14", new Discount(2L, "some description", 23L),
+                    "64b66e3f0dc1125b6d8ecb66", new Discount(2L, "some description", 24L),
+                    "64b66e510dc1125b6d8ecb67", new Discount(3L, "some description", 25L),
+                    "64b66e550dc1125b6d8ecb68", new Discount(4L, "some description", 15L),
+                    "64b66e580dc1125b6d8ecb69", new Discount(5L, "some description", 16L)
             );
 
     @GetMapping("/getProductDiscount/{productId}")
