@@ -24,14 +24,10 @@ repositories {
 extra["springCloudVersion"] = "2022.0.3"
 
 dependencies {
-//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.cloud:spring-cloud-starter-gateway")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
-	implementation("org.springframework.boot:spring-boot-starter-amqp")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-//	runtimeOnly("com.oracle.database.jdbc:ojdbc8")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
