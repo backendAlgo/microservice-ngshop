@@ -2,15 +2,16 @@ package io.ngshop.basket.controller;
 
 import feign.FeignException;
 import io.ngshop.basket.Discount;
+import io.ngshop.basket.Request;
+import io.ngshop.basket.Response;
 import io.ngshop.basket.clients.DiscountClient;
 import io.ngshop.basket.clients.Joke;
 import io.ngshop.basket.clients.JokeApiClient;
 import io.ngshop.basket.service.DiscountService;
+import io.ngshop.basket.service.RabbitMQSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/Basket")
@@ -19,6 +20,9 @@ public class BasketController {
     DiscountService discountService;
     @Autowired
     DiscountClient discountClient;
+
+    @Autowired
+    RabbitMQSender rabbitMQSender;
 
     @Autowired
     JokeApiClient jokeApiClient;
@@ -40,5 +44,11 @@ public class BasketController {
     @GetMapping("/random_joke")
     public ResponseEntity<Joke> getJoke() {
         return ResponseEntity.ok(jokeApiClient.getRandomeJoke());
+    }
+
+    @PostMapping("/checkout")
+    public ResponseEntity<Response> checkout(@RequestBody Request request) {
+        rabbitMQSender.send(request);
+        return ResponseEntity.ok(Response.builder().message("queuega qo'shildi").build());
     }
 }

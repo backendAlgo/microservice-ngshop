@@ -1,20 +1,35 @@
 package io.ngshop.ordering;
 
+import io.ngshop.ordering.listener.RabbitMQListener;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.listener.MessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.amqp.core.Queue;
 
 @Configuration
 public class Config {
-    static final String topicExchangeName = "spring-boot-exchange";
+    public static final String exchange = "default-topic";
 
-    static final String queueName = "default-queue-2";
+    public static final String queueName = "default-queue";
+
+    public static final String routingKey = "default.routingkey";
+
+//    @Bean
+//    MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory ) {
+//        SimpleMessageListenerContainer simpleMessageListenerContainer = new SimpleMessageListenerContainer();
+//        simpleMessageListenerContainer.setConnectionFactory(connectionFactory);
+//        simpleMessageListenerContainer.setQueues(queue());
+//        simpleMessageListenerContainer.setMessageListener(new RabbitMQListener());
+//        return simpleMessageListenerContainer;
+//
+//    }
 
     @Bean
     Queue queue() {
@@ -22,27 +37,8 @@ public class Config {
     }
 
     @Bean
-    TopicExchange exchange() {
-        return new TopicExchange(topicExchangeName);
+    public Jackson2JsonMessageConverter producerJackson2MessageConverter() {
+        return new Jackson2JsonMessageConverter();
     }
 
-    @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
-    }
-
-    @Bean
-    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
-                                             MessageListenerAdapter listenerAdapter) {
-        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
-        container.setQueueNames(queueName);
-        container.setMessageListener(listenerAdapter);
-        return container;
-    }
-
-    @Bean
-    MessageListenerAdapter listenerAdapter(Receiver receiver) {
-        return new MessageListenerAdapter(receiver, "receiveMessage");
-    }
 }
