@@ -21,16 +21,6 @@ public class Config {
 
     public static final String routingKey = "default.routingkey";
 
-//    @Bean
-//    MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory ) {
-//        SimpleMessageListenerContainer simpleMessageListenerContainer = new SimpleMessageListenerContainer();
-//        simpleMessageListenerContainer.setConnectionFactory(connectionFactory);
-//        simpleMessageListenerContainer.setQueues(queue());
-//        simpleMessageListenerContainer.setMessageListener(new RabbitMQListener());
-//        return simpleMessageListenerContainer;
-//
-//    }
-
     @Bean
     Queue queue() {
         return new Queue(queueName, false);
